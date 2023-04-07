@@ -9,12 +9,14 @@ const user = {
   },
   0: '0123456789'
 }
+// object에 key로 접근해서 value 값 반환
 console.log(user.name);
 console.log(user.age);
 console.log(user['name']);
 console.log(user['from']);
 console.log(user['0']); // 0123456789
 console.log(user[0]);   // 0123456789
+
 user.ask(); // 함수 호출도 가능
 console.log('age' in user); // true
 20 in [10, 20, 30, 40] //  false : in 연산자는 key를 순회

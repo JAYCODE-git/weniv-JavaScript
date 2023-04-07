@@ -105,10 +105,8 @@ console.log(inc.includes('hell'))    // false
 
 // ? join
 console.warn('5. join');
-const join1 = ['hello', 'world', 'jay']
+const join1 = ['cheer up', 'Jay']
 join1.join('!')
-console.log(join1);
 
 const join2 = ['010', '1234', '5678']
 join2.join('-')
-console.log(join2);

@@ -41,38 +41,38 @@ function hello(para) {
 console.log(hello(10)); // 10, hello, ---------
 
 
-// ! 같은 코드 테스트 놓침...ㅠㅠ
-// let x = console.log
-// x('hello');
+// ? 아래 3개는 같은 코드!
+let x = console.log
+x('hello');
 
-// //1
-// function hello1() {
-//   console.log('hello1');
-// }
+//1
+function hello1() {
+  console.log('hello1');
+}
 
-// //2
-// function hello2() {
-//   console.log('hello2');
-//   return
-// }
+//2
+function hello2() {
+  console.log('hello2');
+  return
+}
 
-// function hello3() {
-//   console.log('hello3');
-//   return undefined
-// }
+function hello3() {
+  console.log('hello3');
+  return undefined
+}
 
-// hello4()
+hello4()
 
-// function hello5() {
-//   if (true) {
-//     if (true) {
-//       if (true) {
-//         return
-//       }
-//     }
-//   }
-//   console.log('hi');
-// }
+function hello5() {
+  if (true) {
+    if (true) {
+      if (true) {
+        return
+      }
+    }
+  }
+  console.log('hi');
+}
 
 // return으로 반환하더라도 1회 반환만 이루어 지는 것. 전체 순회가 종료되는 것은 아님.
 const x = [10, 20, 30, 40];
@@ -83,6 +83,7 @@ x.forEach(el => {
 
 
 
+// Case 1 : parameter과 arguments의 length가 일치하지 않는 경우
 function func1(a, b, c) {
   return a + b + c
 }
@@ -90,30 +91,39 @@ func1(10, 20, 30, 40) // 60 //parameter 입력 개수를 초과해도 error가 �
 func1(10, 20)        // NaN // parameter 입력 개수 미만이어도 error가 발생하지 않음
 
 
+
+// Case 2 : arguments는 순차적으로 할당됨.
+// 아래 예제의 경우 c값에 들어가는 게 아니라 b값에 들어가고 c는 생략.
 function func2(a = 10, b = 20, c = 30) {
   return a + b + c
 }
-func2(1, c = 1) // 32 // c에 들어가는 게 아니라 순차적으로 b에 들어가고 c는 생략
+func2(1, c = 1) // 32 
 
 
-// 아래와 같은 식별 이슈가 있을 경우 Object로 전달.(roro 기법)
+// Case 3 : roro기법
+// 아래와 같은 식별 이슈가 있을 경우 object로 넘깁니다.
+function runPython(user, time, code, lv) {
+}
+runPython('leehojun', 100, 'function...', 3)
 
 function runPython({ user, time, code, lv }) {
-  return
 }
+
 runPython({
   user: 'leehojun',
   time: 100,
-  code: 'function()',
-  lv: 10
-});
+  code: 'function...',
+  lv: 3
+})
 
-// ! 초기설정..에러뜸ㅠㅠ다시하자
-// function runPython({
-//   user = '',
-//   time = 0,
-//   code = '',
-//   lv = 0 });
+// 기본값 설정
+function runPython({
+  user = '',
+  time = 0,
+  code = '',
+  lv = 0 }) {
+}
+
 
 
 console.warn('2. 화살표 함수의 다양한 예제 ⭐️⭐️⭐️⭐️');
@@ -134,3 +144,14 @@ let 함수3 = x => x + 10
 // 결과 출력
 let 결과 = 함수3(2);
 console.log(결과);
+
+
+// ? 즉시 실행 함수
+(function() {
+  console.log('이 함수는 만들어지자마자 바로 실행됩니다!');
+})();
+
+function 함수() {
+}
+
+함수()

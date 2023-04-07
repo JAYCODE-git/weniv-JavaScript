@@ -14,19 +14,26 @@ console.log(num.sort()); // [1, 11, 200, 3, 6, 8]
 
 // * 숫자 정렬은 그냥 암기 or snippet 사용
 //오름차순
-console.log(num.sort((a, b) => a - b));
+num.sort((a, b) => a - b);
+
 //내림차순
-console.log(num.sort((a, b) => b - a));
+num.sort((a, b) => b - a);
 
 
 // * 실무사용코드
 function sort(key) {
+  // click 변수가 True면?
   if (click) {
+    // click 변수를 false로 설정.
     click = false
+    // jsonData를 key에 따라 오름차순 정렬.
     var sortedData = jsonData.sort((a, b) => (a[key] < b[key] ? -1 : (a[key] > b[key] ? 1 : 0)))
   }
+  // click 변수가 false면?
   else {
+    // click 변수를 True로 설정.
     click = true
+    // jsonData를 key에 따라 내림차순 정렬.
     var sortedData = jsonData.sort((a, b) => (a[key] > b[key] ? -1 : (a[key] < b[key] ? 1 : 0)))
   }
 }
