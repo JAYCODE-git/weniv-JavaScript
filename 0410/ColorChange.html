@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 바꿔바꿔</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .canvas {
+            background-color: #eee;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 40px;
+            border-radius: 20px;
+        }
+
+        .red {
+            background-color: orangered;
+        }
+
+        .yellow {
+            background-color: khaki;
+        }
+
+        .green {
+            background-color: mediumseagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <article class="palette">
+        <h1>🎨 Color Change</h1>
+        <div class="canvas"></div>
+        <div class="buttons">
+            <button data-color="red" class="btn-red">빨강</button>
+            <button data-color="yellow" class="btn-yellow">노랑</button>
+            <button data-color="green" class="btn-green">초록</button>
+        </div>
+    </article>
+
+    <script>
+        const canvas = document.querySelector('.canvas');
+        const btn = document.querySelectorAll('.buttons')
+
+        // * solution 01
+        btn.forEach((item) => {
+            // 버튼을 클릭하면 canvas의 class를 'canvas'로 초기화.
+            // 버튼의 data-color에 따라 'red', 'yellow', 'green' 중 canvas의 class를 변경.
+            item.addEventListener('click', (e) => {
+                canvas.className = 'canvas';
+                const color = e.target.dataset.color;
+                if (e.target.tagName !== 'BUTTON') return;
+                canvas.classList.add(color)
+            });
+        });
+
+        // * solution 02
+        // querySelectorAll로 'btn-' class 로 시작하는 버튼을 선택
+        // const btns = document.querySelectorAll('button[class^=btn-]');
+
+        // // forEach로 각각의 버튼에 이벤트 리스너를 추가
+        // btns.forEach((item) => {
+        //     // 버튼을 클릭하면 canvas의 class를 'canvas'로 초기화.
+        //     item.addEventListener('click', () => {
+        //         canvas.className = 'canvas'
+        //         // 버튼의 class에 따라 canvas의 class를 변경.
+        //         if (item.classList.contains('btn-red')) {
+        //             canvas.classList.add('red')
+        //         } else if (item.classList.contains('btn-yellow')) {
+        //             canvas.classList.add('yellow')
+        //         } else {
+        //             canvas.classList.add('green')
+        //         }
+        //     })
+        // });
+    </script>
+
+
+
+
+</body>
+
+</html>
