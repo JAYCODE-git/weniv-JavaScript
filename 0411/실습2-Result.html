@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 스터디 모집 설문조사</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #fff;
+        }
+
+        #mainForm {
+            width: 460px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #FF8787;
+        }
+
+        #mainForm fieldset {
+            border: none;
+        }
+
+        #mainForm legend {
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        #mainForm label {
+            display: block;
+        }
+
+        #mainForm input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            /* 그림자의 수평거리, 수직거리, 그림자 테두리 크기, 그림자의 위치(inset: 내부로)  */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+        }
+
+        /* 가상클래스 valid. input에 입력받은 값이 유효하다면을 의미합니다. */
+        #mainForm input:valid {
+            background-color: #E5EBB2;
+        }
+
+        #mainForm button {
+            /* fieldset은 BFC를 생성하기 때문에 해제가 필요 없습니다. https://html.spec.whatwg.org/multipage/rendering.html#the-fieldset-and-legend-elements */
+            float: right;
+            padding: 10px;
+            margin-left: 10px;
+            background-color: #F8C4B4;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+        }
+
+        #mainForm progress {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="mainForm">
+        <fieldset>
+            <legend>JS 스터디 모집 설문조사</legend>
+            <!-- progress : 작업의 완료 정도를 나타내는 요소입니다. -->
+            <progress max="100" value="0" class="bar-progress"></progress>
+            <p class="msg-notice">설문지를 작성하세요!</p>
+
+            <label for="q1">질문 1. 무엇을 가장 배우고 싶으세요?</label>
+            <input type="text" id="q1" required>
+            <label for="q2">질문 2. 시간은 언제가 적당한가요?</label>
+            <input type="text" id="q2" required>
+            <label for="q3">질문 3. 몇 시간정도 예상하세요?</label>
+            <input type="text" id="q3" required>
+            <label for="q4">질문 4. 난이도를 조정한다면?</label>
+            <input type="text" id="q4" required>
+            <label for="q5">질문 5. 끝으로 하고싶은 말이 있나요?</label>
+            <input type="text" id="q5" required>
+
+            <button type="submit">제출</button>
+            <button type="reset">초기화</button>
+        </fieldset>
+    </form>
+
+    <script>
+        const mainForm = document.querySelector('#mainForm')
+        const progress = document.querySelector('.bar-progress');
+        const notice = document.querySelector('.msg-notice');
+        const inputs = document.querySelectorAll('input');
+        const noticeMsg = ['질문1', '질문2', '질문3', '질문4', '질문5']
+        const btnReset = document.querySelector('button[type="reset"]');
+
+        // 1. 재현강사님 풀이
+        // mainForm.addEventListener('keyup', () => {
+        //     let validCounter = 0;
+        //     inputs.forEach((item) => {
+        //         // input의 유효성을 validity 내장객체를 통해 검사합니다.
+        //         if (item.validity) {
+        //             console.log(item.validity);
+        //             if (item.validity === true) {
+        //                 validCounter++;
+        //             }
+        //         }
+        //     });
+        //     switch (validCounter) {
+        //         case 1:
+        //             progress.setAttribute('value', '20')
+        //             notice.textContent = noticeMsg[0];
+        //             break;
+        //         case 2:
+        //             progress.setAttribute('value', '40')
+        //             notice.textContent = noticeMsg[1];
+        //             break;
+        //         case 3:
+        //             progress.setAttribute('value', '60')
+        //             notice.textContent = noticeMsg[2];
+        //             break;
+        //         case 4:
+        //             progress.setAttribute('value', '80')
+        //             notice.textContent = noticeMsg[3];
+        //             break;
+        //         case 5:
+        //             progress.setAttribute('value', '100')
+        //             notice.textContent = noticeMsg[4];
+        //             break;
+        //         default:
+        //             progress.setAttribute('value', '0')
+        //             break;
+        //     }
+        // });
+
+        // 2. 나의 풀이 💖
+        mainForm.addEventListener('keyup', () => {
+            //completed는 입력된 input의 개수를 저장하는 변수.
+            let completed = 0;
+            inputs.forEach((item) => {
+                // input의 value가 빈 문자열이 아니라면 completed를 1 증가.
+                if (item.value !== '') {
+                    completed++
+                }
+                // progress의 value값을 completed / inputs.length * 100으로 설정.
+                progress.value = (completed / inputs.length) * 100;
+                notice.innerText = noticeMsg[completed - 1]
+            });
+        });
+
+
+
+        // btnReset클릭시 progress 초기화 이벤트 실행.
+        btnReset.addEventListener('click', () => {
+            progress.setAttribute('value', '0');
+        });
+    </script>
+</body>
+
+</html>
