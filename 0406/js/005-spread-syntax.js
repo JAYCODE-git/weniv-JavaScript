@@ -30,12 +30,12 @@ const user = {
 }
 
 weniv = {
-      ...user, // 전개구문으로 user object 불러오기
+  ...user, // 전개구문으로 user object 불러오기
   라이캣: '휴가',
-          해골왕: '퇴사'
+  해골왕: '퇴사'
 }
 // 뒤에 있는 Object가 덮어져서 데이터 업데이트시 용이.
-  console.log(weniv); // = 라이캣 : 휴가
+console.log(weniv); // = 라이캣 : 휴가
 
 
 // ? 구조분해 할당
@@ -77,3 +77,16 @@ const test2 = [
 for (const [i, j, ...k] of test2) {
   console.log('Spread :', i, j, ...k);
 }
+
+// 4월 12일 추가 코드
+// Math.max 전개구문
+Math.max(...[10, 20, 30])
+
+
+// flat(infinity)를 활용한 전개구문으로 배열의 최대값 구하기
+Math.max(...[20, 30, 40, [10, 20, [20, 30, 60]]].flat(Infinity))
+
+// 전개구문으로 문자열을 배열로 만들기
+const s = 'hello world!';
+console.log([s])       //s.split()와 같은 결과
+console.log([...s])    //s.split('')와 같은 결과
