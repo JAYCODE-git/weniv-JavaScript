@@ -9,13 +9,13 @@ const person = {
     age: 25,
     a() {
         console.log(this);
-        console.log(this.name);
+        console.log(this.name, 'a');
         let b = () => {
             console.log(this);
-            console.log(this.name);
+            console.log(this.name, 'b');
             let c = () => {
                 console.log(this);
-                console.log(this.name);
+                console.log(this.name, 'c');
             }
             c()
         }
@@ -77,3 +77,36 @@ function Book(책이름, 책가격, 저자, 출판일) {
     this.출판일 = 출판일
     // return this
 }
+
+console.warn('---------- 같은 명령을 다른 대상에게 해야할 때 ----------');
+function attackBeam() { // 레이저 공격
+    this.hp -= 20
+}
+
+function attackKnife() { // 칼공격
+    if (this.name === 'thanos') {
+        this.hp -= 1
+        return
+    }
+    this.hp -= 5
+}
+
+let zombie = {
+    name: 'zombie',
+    damaged1: attackBeam,
+    damaged2: attackKnife,
+    hp: 10000,
+    power: 2
+}
+
+let thanos = {
+    name: 'thanos',
+    damaged1: attackBeam,
+    damaged2: attackKnife,
+    hp: 1000,
+    power: 100
+}
+
+zombie.damaged1() // Beam
+zombie.damaged2() // Knife
+zombie.hp
