@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 이벤트 전파</title>
+</head>
+
+<body>
+    <h1>DOM 이벤트 전파</h1>
+    <ol>
+        <li class="parent-this">
+            DOM This
+            <button class="btn-first" type="button">버튼1</button>
+            <button type="button">버튼2</button>
+            <button type="button">버튼3</button>
+        </li>
+        <li>
+            DOM preventDefault()
+            <!-- submit 의 기본 동작을 중지 -->
+            <form action="">
+                <button type="submit" class="submit">제출</button>
+            </form>
+        </li>
+        <li>
+            DOM stopPropagation()
+            <form action="" class="stop">
+                <button type="submit">제출</button>
+            </form>
+        </li>
+    </ol>
+    <div class="todo">
+        <h1>나의 todo list</h1>
+        <p>1. 오늘 저녁에는 부대찌게를 끓여 먹겠다.<button type="button">삭제</button></p>
+        <p>2. 후식으로 슈팅스타를 먹겠다.<button type="button">삭제</button></p>
+        <p>3. 자기 전에 반드시 내일 아침 메뉴를 생각해두겠다.<button type="button">삭제</button></p>
+    </div>
+    <script src="001-DOM-this.js"></script>
+    <script src="002-DOM-preventDefault.js"></script>
+    <script src="003-DOM-stopPropagation.js"></script>
+</body>
+
+</html>
