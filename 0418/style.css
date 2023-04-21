@@ -1,24 +1,31 @@
+:root {
+    --item-width: 340px;
+    /* --item-length: 7;
+    --translateZ: calc(var(--item-width) * var(--item-length) / 2 / 3.14) */
+}
+
 body {
     text-align: center;
 }
 
 #app {
-    width: 100vh;
+    width: 100%;
     height: 100vh;
     perspective: 1600px;
 }
 
 .list-item {
     position: fixed;
-    width: 340px;
+    width: var(--item-width);
     height: 400px;
     padding: 0;
     top: 50%;
     left: 50%;
     list-style: none;
-    transform: translate(-50%, -50%) rotateX(0deg);
+    transform: translate(-50%, -50%) rotateY(0deg);
     /* 자식 요소에 3D 효과를 적용하기 위해 필요한 속성 */
     transform-style: preserve-3d;
+    transition: transform 0.8s ease-out;
 }
 
 .list-item li {
@@ -27,7 +34,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    border: 1px solid #ddd;
     border-radius: 10px;
     backface-visibility: hidden;
 }
@@ -35,41 +41,37 @@ body {
 /* 반지름 공식 : 원의 둘레 / 2 / 3.14 */
 .list-item li:nth-child(1) {
     background-color: #f1c40f;
-    transform: rotateY(calc(360deg/7)) translateZ(calc(340px * 7 / 2 / 3.14));
+    /* transform: rotateY(0) translateZ(var(--translateZ)); */
 }
 
 .list-item li:nth-child(2) {
     background-color: #e67e22;
-    transform: rotateY(calc(360deg/6)) translateZ(calc(340px * 7 / 2 / 3.14));
+    /* transform: rotateY(calc(360deg/var(--item-length))) translateZ(var(--translateZ)); */
 }
 
 .list-item li:nth-child(3) {
     background-color: #e74c3c;
-    transform: rotateY(calc(360deg/5)) translateZ(calc(340px * 7 / 2 / 3.14));
+    /* transform: rotateY(calc(360deg/var(--item-length)*2)) translateZ(var(--translateZ)); */
 }
 
 .list-item li:nth-child(4) {
     background-color: #9b59b6;
-    transform: rotateY(calc(360deg/4)) translateZ(calc(340px * 7 / 2 / 3.14));
+    /* transform: rotateY(calc(360deg/var(--item-length)*3)) translateZ(var(--translateZ)); */
 }
 
 .list-item li:nth-child(5) {
     background-color: #3498db;
-    transform: rotateY(calc(360deg/3)) translateZ(calc(340px * 7 / 2 / 3.14));
+    /* transform: rotateY(calc(360deg/var(--item-length)*4)) translateZ(var(--translateZ)); */
 }
 
 .list-item li:nth-child(6) {
     background-color: #2ecc71;
-    transform: rotateY(calc(360deg/2)) translateZ(calc(340px * 7 / 2 / 3.14));
+    /* transform: rotateY(calc(360deg/var(--item-length)*5)) translateZ(var(--translateZ)); */
 }
 
 .list-item li:nth-child(7) {
     background-color: #1abc9c;
-    transform: rotateY(calc(360deg/1)) translateZ(calc(340px * 7 / 2 / 3.14));
-}
-
-.list-item li {
-    background: none !important;
+    /* transform: rotateY(calc(360deg/var(--item-length)*6)) translateZ(var(--translateZ)); */
 }
 
 .list-item li img {
