@@ -28,19 +28,28 @@ robot1 instanceof Factory; // = true
 // * 생성자 함수 [로봇 예제]
 // 생성자 함수 앞에 new 연산자가 사용되면 함수안의 this는 생성자가 만들어낸 객체 즉, 인스턴스를 참조.
 
-// 생성자 함수 NewFactory 생성
+// 1. 생성자 함수 NewFactory 생성
 class NewFactory {
     constructor(name) {
         this.name = name;
-        this.sayYourName = function () {
+        this.speak = function () {
             console.log(`삐리비리. 제 이름은 ${this.name}입니다.`);
         };
     }
 }
 
-// instance 생성
+// 2. instance 생성
 const jayBot = new NewFactory('🤖JAY');
 const paulBot = new NewFactory('🤖PAUL');
-console.log(jayBot.sayYourName(), paulBot.sayYourName());
+
+
+// 3. instanceof 연산자를 통해 생성자 함수로 생성된 객체인지 확인
+jayBot instanceof NewFactory; // = true
+
+// 4. instance의 name 프로퍼티에 접근
+jayBot.speak()
+paulBot.speak();
+
+// 5. Console 출력 화면
 // = 삐리비리. 제 이름은 🤖JAY입니다.
 // = 삐리비리. 제 이름은 🤖PAUL입니다.

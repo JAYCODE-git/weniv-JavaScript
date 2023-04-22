@@ -8,11 +8,11 @@
 
 
 
-// * 객체지향 프로그래밍 예제
+// * 객체지향 프로그래밍 예제 1
 // teacher 객체 생성
 const teacher = {
-    name: '🐻‍❄️wade',
-    address: '제주도 제주시 인다 1길',
+    name: '👩🏻‍🏫 Jay',
+    subject: 'JavaScript',
     phoneNum: '010-8000-0000',
     // student를 levelUp시키는 teaching 함수 선언.
     teaching: function (student) {
@@ -31,3 +31,36 @@ const student = {
 }
 // teacher 객체의 teaching 메서드를 호출하면서 student 객체를 인수로 전달.
 teacher.teaching(student);
+
+
+
+
+// * 객체지향 프로그래밍 예제 2
+// jay 객체 생성
+const jay = {
+    name: '🙋🏻‍♀️ Jay',
+    // cat의  Happiness를 증가시키는 care 함수 선언.
+    care: function (cat) {
+        cat.upLift();
+    }
+}
+
+// cat 객체 생성
+const cat = {
+    name: '🐈‍⬛ 간장이',
+    happiness: 30,
+    // cat의 Happiness를 10 증가시키는 upLift 함수 선언.
+    upLift: function () {
+        this.happiness += 10;
+        if (this.happiness < 50) {
+            console.log(`💖 ${this.name}와 함께 시간을 보내주세요...😿`)
+        } else if (this.happiness < 100) {
+            console.log(`💖 ${this.name}의 현재 만족도는 ${this.happiness}% 입니다.`)
+        } else {
+            this.happiness = 100;
+            console.log(`💖${this.happiness} ${this.name}는 지금 최고로 행복해요!`)
+        }
+    }
+}
+// care 메서드를 호출하면서 cat 객체를 인수로 전달.
+jay.care(cat);
