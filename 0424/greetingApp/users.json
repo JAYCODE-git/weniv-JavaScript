@@ -1,0 +1,16 @@
+{
+    "greetings": [
+        {
+            "userName": "jay",
+            "speak": "Hello, 🙋🏻‍♀️ jay!"
+        },
+        {
+            "userName": "gary",
+            "speak": "Hello, 🐸 gary!"
+        },
+        {
+            "userName": "soi",
+            "speak": "Hello, 🐈‍⬛ soi!"
+        }
+    ]
+}
