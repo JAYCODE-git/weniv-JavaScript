@@ -1,16 +1,16 @@
 {
-    "user": [
+    "greetings": [
         {
             "userName": "jay",
-            "password": "111"
+            "speak": "Hello, 🙋🏻‍♀️ jay!"
         },
         {
             "userName": "gary",
-            "password": "222"
+            "speak": "Hello, 🐸 gary!"
         },
         {
             "userName": "soi",
-            "password": "333"
+            "speak": "Hello, 🐈‍⬛ soi!"
         }
     ]
 }
