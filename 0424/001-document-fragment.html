@@ -42,19 +42,20 @@
         const main = document.querySelector('main');
         const parentArt = document.querySelector('.parentArt');
 
+        // solution 01 | Document.body를 이용한 DOM 조작
         // for (let i = 0; i < 10; i++) {
         //     const copy = parentArt.cloneNode(true);
         //     document.body.appendChild(copy);
         // }
 
-        // ! 재현님 코드 복사!!!!
-        // 5. DocumentFragment를 이용한 DOM 조작
-        const frag2 = document.createDocumentFragment();
+        // Solution 02 | DocumentFragment를 이용한 DOM 조작
+        const fragment = new DocumentFragment();
         for (let i = 0; i < 10; i++) {
             const copy = parentArt.cloneNode(true);
-            frag2.append(copy);
+            fragment.appendChild(copy);
         }
-        main.append(frag2);
+        main.append(fragment);
+
     </script>
 </body>
 
