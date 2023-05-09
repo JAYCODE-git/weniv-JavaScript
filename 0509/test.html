@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script>
+        const $root = document.querySelector('#root')
+        const $h1 = document.createElement('h1')
+        const $section = document.createElement('section')
+        const sectionTitle = '섹션 제목'
+        const sectionImg = 'img.jpg'
+        const sectionImgDesc = '섹션 이미지'
+        const sectionCont = '내용'
+
+        $h1.textContent = '테스트 페이지'
+        $h1.className = "ir"
+        $section.innerHTML = `
+            <h2 class="section-title">${sectionTitle}</h2>
+            <img class="section-img" src="${sectionImg}" alt="${sectionImgDesc}">
+            <p class="section-contents">${sectionCont}</p>
+        `;
+        $root.appendChild($h1);
+        $root.appendChild($section);
+    </script>
+</body>
+
+</html>
