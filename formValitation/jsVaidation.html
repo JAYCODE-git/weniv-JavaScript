@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jsValidation</title>
+  <style>
+    label {
+      display: block;
+    }
+
+    input {
+      border: 2px solid #ddd;
+      padding: 0.5rem 1rem;
+      display: block;
+      margin: 10px;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    input:invalid {
+      border: 2px solid #f00;
+    }
+
+    input:valid {
+      border: 2px solid dodgerblue;
+    }
+  </style>
+</head>
+<!-- 
+  1. 이메일을 입력하는 인풋창을 만들고 
+  2. 폼을 제출했을 때 만약 이메일 양식에 어긋나면 ‘알맞는 양식의 이메일 주소를 입력하세요’ 메세지를 출력하도록 합니다. 
+  3. 양식이 올바르다면 제출하도록 만들어보세요.
+ -->
+
+<body>
+
+  <form action="" class="inputs">
+    <label for="">email</label>
+    <input type="email" class="alert" pattern="[a-zA-Z0-9]*@[a-z]*.[a-z]*" required>
+    <input type="number" min="3" required>
+    <input type="text" minlength="5" required>
+    <button type="submit">제출</button>
+  </form>
+  <script>
+    // Client-side form validation API
+    // https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#the_constraint_validation_api
+
+    const inputs = document.querySelectorAll('.inputs input');
+    inputs.forEach((inp) => {
+      inp.addEventListener('input', () => {
+        console.log(inp.validity);
+      })
+    })
+
+    const btn = document.querySelector('button');
+    btn.addEventListener('click', () => {
+      alert.validity.typeMismatch
+        ? alert.setCustomValidity('알맞는 양식의 이메일 주소를 입력하세요.')
+        : alert.setCustomValidity('');
+    })
+  </script>
+</body>
+
+</html>

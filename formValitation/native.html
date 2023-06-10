@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validate</title>
+  <style>
+    /* invalid : 올바르지 못한 입력을 받으면 작동 */
+    input:invalid {
+      border: 2px solid red;
+    }
+
+    /* valid : 입력을 재대로 받으면 작동 */
+    input:valid {
+      border: 2px solid green;
+    }
+
+    /* 필수 입력폼인 경우 작동 */
+    input:required {
+      border-bottom: 2px solid blue;
+    }
+
+    /* 필수 입력폼인 경우 + 올바르지 못할 때 작동 */
+    input:required:invalid {
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form action="">
+    <fieldset>
+      <label for="stuff">원하는 수량을 입력하세요 : </label>
+      <input type="number" id="stuff" min="3" max="10">
+    </fieldset>
+
+    <fieldset>
+      <label for="stuff2">이메일을 입력하세요 : </label>
+      <input type="email" id="stuff2" minlength="10" maxlength="20" required>
+    </fieldset>
+
+    <button type="submit">제출</button>
+  </form>
+</body>
+
+</html>
